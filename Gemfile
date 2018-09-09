@@ -50,4 +50,5 @@ group :development do
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-unicorn'
   gem 'byebug'
+  gem 'rails-erd'
 end
