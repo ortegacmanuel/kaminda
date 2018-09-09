@@ -1,0 +1,7 @@
+en:
+  inline_forms:
+    general:
+      application_title: kaminda
+    devise:
+      title_for_devise: kaminda
+      welcome: Welcome to kaminda!

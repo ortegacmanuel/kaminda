@@ -1,0 +1,21 @@
+<div class="title-search-block">
+    <div class="title-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="title"> <%= t(controller_name) %>
+                    <%= link_to_new_record(@Klass, "new_#{@Klass.to_s.singularize.underscore}_path", @Klass.to_s.pluralize.downcase + '_list') %>
+                </h3>
+                <!-- <p class="title-description"> List of sample items - e.g. books, movies, events, etc... </p> -->
+            </div>
+        </div>
+    </div>
+    <div class="items-search">
+        <%= form_tag request.path, :method => 'get', class: 'form-inline' do %>
+          <%= link_to "<i class='fi-x'></i>".html_safe, request.path, :title => 'reset', :class => "button expand inline_forms_model_top_bar_buttons" %>
+          <%= text_field_tag :search,  params[:search], :placeholder => 'zoek op naam...', :id => 'input_search', class: 'form-control boxed' %>
+          <%= button_tag(type: "submit", class: "btn btn-secondary rounded-s") do %>
+            <%= octicon("search", height: '18px') %>
+          <% end %>
+        <% end %>
+    </div>
+</div>
