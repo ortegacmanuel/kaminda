@@ -38,6 +38,7 @@ class User < ApplicationRecord
   end
 
   def success_percentage
+    return 0 if training_tries.count.zero?
     (correct_count * 100) / training_tries.count
   end
 
