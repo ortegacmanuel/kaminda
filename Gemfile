@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 # created by inline_forms 5.1.1 on {Date.today}
+ruby "2.4.1"
 
 gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
@@ -32,6 +33,7 @@ gem 'will_paginate'
 gem 'turbolinks', '~> 5'
 gem 'autoprefixer-rails', '~> 8.3'
 gem 'bootstrap-datepicker-rails'
+gem 'pg'
 group :development do
   gem 'bundler'
   gem 'listen'
