@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180909170244) do
+ActiveRecord::Schema.define(version: 20180909172600) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -67,6 +67,34 @@ ActiveRecord::Schema.define(version: 20180909170244) do
   create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "training_sessions", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_training_sessions_on_user_id"
+  end
+
+  create_table "training_tries", force: :cascade do |t|
+    t.string "name"
+    t.integer "result"
+    t.integer "training_unit_id"
+    t.integer "training_session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_session_id"], name: "index_training_tries_on_training_session_id"
+    t.index ["training_unit_id"], name: "index_training_tries_on_training_unit_id"
+  end
+
+  create_table "training_units", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "external_link"
+    t.string "external_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   belongs_to :locale
   has_and_belongs_to_many :roles
+  has_many :training_sessions
+  has_many :training_tries, through: :training_sessions
 
   # validations
   validates :name, :presence => true
@@ -32,7 +34,19 @@ class User < ApplicationRecord
   has_paper_trail
 
   def _presentation
-    "#{name}"
+    html = "#{name} #{success_percentage.round(0)} %"
+  end
+
+  def success_percentage
+    (correct_count * 100) / training_tries.count
+  end
+
+  def correct_count
+    training_tries.count(&:correct?)
+  end
+
+  def wrong_count
+    training_tries.count(&:wrong?)
   end
 
   def role?(role)
@@ -48,6 +62,7 @@ class User < ApplicationRecord
       [ :password,                  '', :devise_password_field ],
       [ :header_user_roles,         '', :header ],
       [ :roles,                     '', :check_list ],
+      [ :training_sessions, "training_sessions", :associated ],
       [ :header_user_other_stuff,   '', :header ],
       [ :encrypted_password,        '', :info ],
       [ :reset_password_token,      '', :info ],

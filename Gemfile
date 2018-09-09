@@ -47,4 +47,5 @@ group :development do
   gem 'capistrano-bundler', '~> 1.3', require: false
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-unicorn'
+  gem 'byebug'
 end
